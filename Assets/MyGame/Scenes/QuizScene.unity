@@ -3126,7 +3126,7 @@ MonoBehaviour:
   - {fileID: 753192381}
   - {fileID: 698819986}
   result: {fileID: 980665504}
-  lostMusic: {fileID: 8300000, guid: 076ccb384ce70704fbcb680573688184, type: 3}
+  lostMusic: {fileID: 8300000, guid: 27aca0e15d89fee45bc31e9288a01f1c, type: 3}
 --- !u!82 &1463831133
 AudioSource:
   m_ObjectHideFlags: 0
