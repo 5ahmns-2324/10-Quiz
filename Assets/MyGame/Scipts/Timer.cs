@@ -1,26 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class Timer : MonoBehaviour
 {
     public float startTime;
     private float timeLeft;
     bool timerRunning = true;
-
     [SerializeField] TMP_Text[] timerT;
-
     private void Start()
     {
         timeLeft = startTime;
     }
-
-    // Update is called once per frame
     void Update()
     {
-
-        if (timerRunning)
+    if (timerRunning)
         {
             if (timeLeft > 0f)
             {
@@ -40,18 +32,12 @@ public class Timer : MonoBehaviour
                 timerT[i].text = minutes.ToString() + ':' + seconds.ToString();
             }
         }
-
-    
     }
-
     public void SetTimerBack()
     {
-
         timerRunning = true; 
-        timeLeft = startTime;
-       
+        timeLeft = startTime; 
     }
-
     public void StopTimer()
     {
         timerRunning = false;

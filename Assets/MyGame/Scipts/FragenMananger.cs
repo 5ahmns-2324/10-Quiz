@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +6,6 @@ using System.Linq;
 
 public class FragenMananger : MonoBehaviour
 {
-    // Weiter Btn geht nur wen alle Fragen beantwortet sind 0
-    // 
-
     [SerializeField] private string[] _questionsArr;
     [SerializeField] private bool[] questionCorAn;
     [SerializeField] private TMP_Text activeQuestion;
@@ -32,33 +28,25 @@ public class FragenMananger : MonoBehaviour
 
     [SerializeField] private Button weiterBtn;
 
-   
     int answered = 0;
-
-    int[] alreadyAnswered = new int[5];
-
     List<int> order = new List<int> {0, 1, 2, 3 ,4};
     List<int> orderAnswers = new List<int> { 0, 1, 2 };
-
     int qID;
     int questionsAnswered = 0;
 
     void Start()
     {
         questionsAnswered = 0;
-
         for (int i=0; i< _questionsArr.Length-1; i++)
         {
             questionCorAn[i] = false;
         }
         order = order.OrderBy(x => Random.value).ToList();
         ChooseQuestion();
-
         for (int i = 0; i <= 2; i++)
         {
             pointCounter[i].text = punktAnzahl.ToString();
         }
-       
     }
 
     public void ChooseQuestion()
@@ -68,19 +56,12 @@ public class FragenMananger : MonoBehaviour
             gameObject.GetComponent<EndGame>().SetGameOver(punktAnzahl);
             return;
         }
-
         SetQuestionsRandom();
-
         SetQuestionCount();
-
         SetAnswersRandom();
-
         ChangeStateWeiter(false);
-
         imageGO.sprite = bilder[qID];
-
         answered = 0;
-
         questionsAnswered++;
     }
 
@@ -95,17 +76,12 @@ public class FragenMananger : MonoBehaviour
  
     public void CheckAccuracy(int buttonInx)
     {
-        //mehr können richtig sein???
-        
-
         if (antwortenOb[qID]._solution[orderAnswers.ElementAt(buttonInx)] == true)
         {
             answered++;
             punktAnzahl++;
-            
             answerBtns[buttonInx].image.sprite = buttonColor[0];
             answerBtns[buttonInx].interactable = false;
-
             if (answered == antwortenOb[qID].amtCorAnswers)
             {
                 DisableAllBtns();
@@ -113,20 +89,12 @@ public class FragenMananger : MonoBehaviour
                 questionCorAn[qID] = true;
                 answered = 0;
             }
-            else if(answered != antwortenOb[qID].amtCorAnswers)
-            {
-                Debug.Log("not quiete");
-            }
-
         }
         else
         {
             answerBtns[buttonInx].image.sprite = buttonColor[1];
-
-            DisableAllBtns();
+             DisableAllBtns();
             ChangeStateWeiter(true);
-                
-      
         }
 
     }
@@ -134,14 +102,10 @@ public class FragenMananger : MonoBehaviour
     private void DisableAllBtns()
     {
         timeL.StopTimer();
-
         for (int i = 0; i <= 2; i++)
         {
             answerBtns[i].interactable = false;
-   
         }
-
-      
     }
 
     private void ChangeStateWeiter(bool wantedState)
@@ -156,36 +120,24 @@ public class FragenMananger : MonoBehaviour
             questInt += qID;
             questionCounterTxt[i].text = questInt.ToString() + "/5";
         }
-
-
     }
 
     void SetAnswersRandom()
     {
-        
         orderAnswers = orderAnswers.OrderBy(x => Random.value).ToList();
-       
-
+   
         for (int i = 0; i < 3; i++)
         {
             activeAnsweres[i].text = antwortenOb[qID]._answerTxt[orderAnswers.ElementAt(i)];
-            
             answerBtns[i].image.sprite = btnBasicColor[i];
             answerBtns[i].interactable = true;
-            
         }
 
     }
 
     void SetQuestionsRandom()
     {
-        // implement questioncorant to not get questions when already answered correctly
-
-
         qID = order.ElementAt(questionsAnswered);
-
         activeQuestion.text = _questionsArr[qID];
-
-
-    }
+     }
 }

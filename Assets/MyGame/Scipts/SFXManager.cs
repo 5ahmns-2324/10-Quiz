@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
     [SerializeField] AudioClip[] clickSounds;
-
     [SerializeField] AudioSource sfxSource;
-    
     public void PlayClick()
     {
         sfxSource = gameObject.GetComponent<AudioSource>();
