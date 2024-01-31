@@ -5,7 +5,8 @@ Finde heraus, ob du das Zeug hast den Intergalaktichen Führerschein zu erhalten
 
 # - Alles Fertig
 # - Start Scene
-# - Sound: Normaler Sound, Loose Sound, Random Click Sound, Fragen können mehrere Antworten
+# - Sound: Normaler Sound, Loose Sound, Random Click Sound
+# - Fragen können mehrere Antworten benötigen
 
 Definitiv aus Frust daraus, dass ich meine theoretische Farhprüfung 3 Mal machen musste entstanden. Nope.
 
